@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e05498d75db94a709247ef1e2be6703, type: 3}
+  m_Name: GeometryObjectData_Sphere
+  m_EditorClassIdentifier: 
+  clicksData:
+  - ObjectType: Sphere
+    MinClicksCount: 0
+    MaxClicksCount: 9
+    Color: {r: 0.29803923, g: 0.53333336, b: 0.3254902, a: 1}
+  - ObjectType: Sphere
+    MinClicksCount: 10
+    MaxClicksCount: 19
+    Color: {r: 0.53333336, g: 0.29803923, b: 0.29411766, a: 1}
+  - ObjectType: Sphere
+    MinClicksCount: 20
+    MaxClicksCount: 29
+    Color: {r: 0.45098042, g: 0.29803923, b: 0.5294118, a: 1}
+  - ObjectType: Sphere
+    MinClicksCount: 30
+    MaxClicksCount: 39
+    Color: {r: 0.29411766, g: 0.41176474, b: 0.53333336, a: 1}
