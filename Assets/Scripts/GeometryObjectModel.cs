@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 
 public interface IGeometryObjectModel
 {
@@ -46,10 +47,10 @@ public class GeometryObjectModel : MonoBehaviour, IGeometryObjectModel
     private FigureTypes type;
 
     private List<ClickColorData> cicksData = new List<ClickColorData>();
+    private float observableTime;
 
     private Material material;
-
-    private float observableTime;
+    private Timer timer;
 
     #endregion // Private
 
@@ -61,12 +62,14 @@ public class GeometryObjectModel : MonoBehaviour, IGeometryObjectModel
 
         UpdateColor();
 
-        Timers.AddTimer(this, observableTime);
+        timer.Add(this, observableTime);
     }
 
     private void Init()
     {
         material = GetComponent<Renderer>().material;
+
+        timer = new Timer();
     }
 
     public void Click()
@@ -101,10 +104,22 @@ public class GeometryObjectModel : MonoBehaviour, IGeometryObjectModel
         else Debug.Log("Цвет не найден");
     }
 
-    public void SetRandomColor()
+    private void SetRandomColor()
     {
         FigureColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
         material.color = FigureColor;
+    }
+
+    private class Timer
+    {
+        public void Add(GeometryObjectModel fastenedFigure, float stepTime)
+        {
+            Observable.Timer(System.TimeSpan.FromSeconds(stepTime)).Repeat().Subscribe(_ =>
+            {
+                fastenedFigure.SetRandomColor();
+
+            }).AddTo(fastenedFigure);
+        }
     }
 }
 
