@@ -57,9 +57,7 @@ public class GeometryObjectModel : MonoBehaviour, IGeometryObjectModel
     private void Start()
     {
         Init();
-
         LoadData();
-
         UpdateColor();
 
         timer.Add(this, observableTime);
@@ -68,7 +66,6 @@ public class GeometryObjectModel : MonoBehaviour, IGeometryObjectModel
     private void Init()
     {
         material = GetComponent<Renderer>().material;
-
         timer = new Timer();
     }
 
